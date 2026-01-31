@@ -1,3 +1,10 @@
+html {
+  scroll-behavior: smooth;   /* smooth anchor scrolling */
+}
+body {
+  -webkit-overflow-scrolling: touch;  /* iOS smooth momentum scroll */
+}
+
 /* ===== Reset ===== */ 
 * {
   margin: 0;
@@ -26,7 +33,8 @@ body {
   color: #fff;
   padding-top: 50px;
   padding-bottom: 50px;
-  overflow-y: hidden; /* default: hidden */
+  overflow-y: auto;        /* ✅ allow vertical scroll on ALL devices */
+  overflow-x: hidden;
 }
 
 /* ===== Scroll for Large Screens ===== */
