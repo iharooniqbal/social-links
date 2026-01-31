@@ -67,8 +67,8 @@ body {
 
 /* ===== Profile Image ===== */
 .profile-img {
-  width: 90px;
-  height: 90px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: ;
   border: 3px solid #00e5ff;
