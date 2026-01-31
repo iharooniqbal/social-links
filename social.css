@@ -264,3 +264,49 @@ p {
     scrollbar-color: #00e5ff rgba(0,0,0,0.1);
   }
 }
+
+
+
+/* ===== Ultra Smooth Base ===== */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+/* Better animation performance */
+.container,
+.social-links a,
+.profile-img {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* ===== Scroll Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Different animation directions */
+.reveal-left { transform: translateX(-60px); }
+.reveal-right { transform: translateX(60px); }
+
+.reveal-left.active,
+.reveal-right.active {
+  transform: translateX(0);
+}
+
+
+.social-links a {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease;
+}
