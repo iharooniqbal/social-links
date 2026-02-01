@@ -413,3 +413,10 @@ body {
   width: 90%;
   max-width: 380px;
 }
+
+
+/* Improve particle animation performance on mobile */
+#particles-js {
+  will-change: transform;
+  transform: translateZ(0);
+}

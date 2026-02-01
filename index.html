@@ -84,9 +84,60 @@
 </div>
 </div>
 
-
   <!-- External JS -->
   <script src="particles.js"></script>
+  
+<script>
+let idleTimer;
+
+// Safe helpers
+function getPJS() {
+  return (window.pJSDom && window.pJSDom[0]) ? window.pJSDom[0].pJS : null;
+}
+
+function pauseParticles() {
+  const pJS = getPJS();
+  if (pJS) pJS.particles.move.enable = false;
+}
+
+function resumeParticles() {
+  const pJS = getPJS();
+  if (pJS) pJS.particles.move.enable = true;
+}
+
+/* =============================
+   IDLE PAUSE (user inactive)
+============================= */
+function resetIdleTimer() {
+  resumeParticles();
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(pauseParticles, 1500);
+}
+
+["scroll", "touchstart", "mousemove"].forEach(evt => {
+  document.addEventListener(evt, resetIdleTimer, { passive: true });
+});
+
+/* =============================
+   INTERSECTION OBSERVER
+   (pause when not visible)
+============================= */
+const particlesContainer = document.getElementById("particles-js");
+
+if (particlesContainer && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        resumeParticles();
+      } else {
+        pauseParticles();
+      }
+    });
+  });
+
+  observer.observe(particlesContainer);
+}
+</script>
 
 </body>
 </html>
